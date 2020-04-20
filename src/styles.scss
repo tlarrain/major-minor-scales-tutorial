@@ -1,0 +1,77 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/theming';
+
+@import '~animate.css/animate.min';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@include mat-core();
+
+.main {
+  color: black;
+}
+
+.secondary {
+  color: darkgray;
+}
+
+.container {
+  display: block;
+  height: 100%;
+  margin: 70px 100px;
+}
+
+.title {
+  font-size: 40px;
+  width: 100%;
+  height: 70px;
+  margin: 0px auto 30px 0;
+  line-height: 50px;
+}
+
+.description {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.fix-description {
+  width: 750px;
+  height: 100px;
+  margin: 0 100px 100px 0;
+}
+
+.float-description {
+  float: left;
+  width: 700px;
+}
+
+.appear-btn {
+  animation-duration: 1ms;
+}
+
+.next-button {
+  float: right;
+  margin-right: 200px;
+}
+
+.info-block {
+  height: 100px;
+}
+
+.start-button {
+  margin-top: 30px;
+  float: right;
+  margin-right: 380px;
+}
+
+.next-step-button {
+  margin-top: 30px;
+  float: right;
+  margin-right: 111px;
+}
+
+.next-step-text {
+  margin-right: 15px;
+  color: #673ab7;
+}
