@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { PianoService } from './core/piano.service';
-import { SoundService } from './core/sound.service';
+import { PianoService } from './services/piano.service';
+import { SoundService } from './services/sound.service';
 import { PianoNote } from './core/piano-note';
 import { PianoMode } from './core/piano-mode.enum';
+import { StorageStepService } from './services/storage-step.service';
 
 
 @Component({
@@ -18,15 +19,20 @@ export class AppComponent implements OnInit {
   subscription: Subscription;
   public step = 1;
   public substep = 1;
-
+  public dottedKeys = [];
+  public maxKeys = 2;
+  public readyForNext = false;
+  private saveStates = false;
   constructor(
+    private storageService: StorageStepService,
     private pianoService: PianoService,
     private soundService: SoundService) {
     this.subscription = pianoService.notePlayed$.subscribe(note => this.handleNotePlayed(note));
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.soundService.initialize();
+    this.step = (await this.storageService.getStep());
   }
 
   handleKeyPlayed(keyId: number) {
@@ -38,11 +44,20 @@ export class AppComponent implements OnInit {
   }
 
   next() {
+    this.readyForNext = false;
     this.step++;
-    this.substep = 1;
+    this.saveCurrentStates();
   }
 
-  nextSubstep() {
-    this.substep++;
+  previous() {
+    this.step--;
+    this.saveCurrentStates();
   }
+
+  saveCurrentStates() {
+    if (this.saveStates) {
+      this.storageService.setStep(this.step);
+    }
+  }
+
 }

@@ -33,9 +33,6 @@
     -webkit-border-radius:0 0 5px 5px;
     -moz-border-radius:0 0 5px 5px;
     border-radius:0 0 5px 5px;
-    -webkit-animation:taufik 2s;
-    -moz-animation:taufik 2s;
-    animation:taufik 2s;
 }
 
 /* Tuts */
@@ -161,18 +158,4 @@ ul#piano .key-group span:active {
   -webkit-box-shadow:inset 0px -1px 1px rgba(255,255,255,0.4),0 1px 0px rgba(0,0,0,0.8),0 2px 2px rgba(0,0,0,0.4),0 -1px 0px #000;
   -moz-box-shadow:inset 0px -1px 1px rgba(255,255,255,0.4),0 1px 0px rgba(0,0,0,0.8),0 2px 2px rgba(0,0,0,0.4),0 -1px 0px #000;
   box-shadow:inset 0px -1px 1px rgba(255,255,255,0.4),0 1px 0px rgba(0,0,0,0.8),0 2px 2px rgba(0,0,0,0.4),0 -1px 0px #000;
-}
-
-/* Animation */
-@-webkit-keyframes taufik {
-  from {opacity:0;}
-  to {opacity:1;}
-}
-@-moz-keyframes taufik {
-  from {opacity:0;}
-  to {opacity:1;}
-}
-@keyframes taufik {
-  from {opacity:0;}
-  to {opacity:1;}
 }

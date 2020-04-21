@@ -1,52 +1,22 @@
 
-<div class="container" *ngIf="step == 1">
-  <div class="title main">
-    Welcome to the Major and Minor scales Tutorial!
-  </div>
-  <div class="description secondary fix-description">
-    Welcome! We will now learn the basics of the two most important scales in music.
-    To do this easier for you, we will visualize scales on a piano, but the theory applies to all instruments
-  </div>
-  <div class="start-button">
-    <button class="next-btn" (click)="next()" mat-raised-button color="primary">Let's do it!</button>
-  </div>
-</div>
+<div class="container">
+  <app-cover *ngIf="step == 1" (finished)="next()"></app-cover>
+  <app-tone-basics *ngIf="step == 2" (finished)="readyForNext = $event" (keyPlayed)="handleKeyPlayed($event)"></app-tone-basics>
+  <app-interval-calculation class="step" *ngIf="step == 3" (finished)="readyForNext = true" (keyPlayed)="handleKeyPlayed($event)" [maxKeys]="2"></app-interval-calculation>
 
-<div *ngIf="step == 2" class="container">
-  <div class="title secondary">
-    Tone Basics
-  </div>
-  <div>
-    <div class="info-block" *ngIf="substep >= 1">
-      <div class="description main float-description">
-        The smallest distance between two notes is called a <b>semitone or half-step</b>. <br>In the piano is when two notes are the
-        closest possible to each other
-      </div>
-      <div class="next-button">
-        <button *ngIf="substep == 1" mat-fab color="primary" (click)="nextSubstep()" aria-label="Example icon button with a home icon">
-          <mat-icon>keyboard_arrow_right</mat-icon>
-        </button>
-      </div>
+  <div class="navigation-bar" *ngIf="step != 1 && readyForNext">
+    <div class="prev-step-button">
+      <button mat-fab color="primary" class="prev-btn" (click)="previous()"
+        aria-label="Example icon button with a home icon">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+      <span class="prev-step-text">Back</span>
     </div>
-    <div class="info-block" *ngIf="substep >= 2">
-      <div class="description main float-description">
-        Two adjacent semitones are called a <b>tone or whole-step</b>. <br>Let's look at the keyboard to visualize it!
-      </div>
-      <div class="next-button">
-        <button *ngIf="substep == 2" mat-fab color="primary" (click)="nextSubstep()" aria-label="Example icon button with a home icon">
-          <mat-icon>keyboard_arrow_right</mat-icon>
-        </button>
-      </div>
+    <div class="next-step-button">
+      <span class="next-step-text">Next step</span>
+      <button mat-fab color="primary" class="next-btn" (click)="next()" aria-label="Example icon button with a home icon">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
     </div>
-  </div>
-  <div *ngIf="substep >= 3" id="keyboard-component">
-    <keyboard [dottedKeys]="[25, 26, 32, 33, 40, 42]" (keyPlayed)="handleKeyPlayed($event)"></keyboard>
-  </div>
-  <div *ngIf="substep >= 3" class="next-step-button">
-    <span class="next-step-text">Next step</span>
-    <button mat-fab color="primary" class="next-btn"
-      aria-label="Example icon button with a home icon">
-      <mat-icon>keyboard_arrow_right</mat-icon>
-    </button>
   </div>
 </div>

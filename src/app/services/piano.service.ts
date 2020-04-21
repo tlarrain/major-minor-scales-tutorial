@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { PianoNote } from './piano-note';
+import { PianoNote } from '../core/piano-note';
 
 
 @Injectable()

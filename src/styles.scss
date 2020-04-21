@@ -8,6 +8,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 @include mat-core();
 
+#keyboard-component {
+  position: absolute;
+  bottom: 120px;
+}
+
 .main {
   color: black;
 }
@@ -18,8 +23,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .container {
   display: block;
-  height: 100%;
-  margin: 70px 100px;
+  margin: 70px 195px 20px 100px;
+}
+
+.step {
+  height: 570px;
 }
 
 .title {
@@ -50,28 +58,32 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   animation-duration: 1ms;
 }
 
-.next-button {
-  float: right;
-  margin-right: 200px;
-}
-
 .info-block {
-  height: 100px;
+  height: 120px;
 }
 
-.start-button {
-  margin-top: 30px;
-  float: right;
-  margin-right: 380px;
+.navigation-bar {
+  margin-top: 20px;
+  height: 200px;
 }
 
 .next-step-button {
-  margin-top: 30px;
+  margin-top: 0;
   float: right;
-  margin-right: 111px;
+  margin-right: 12px;
 }
 
 .next-step-text {
   margin-right: 15px;
+  color: #673ab7;
+}
+
+.prev-step-button {
+  margin-top: 0;
+  float: left;
+}
+
+.prev-step-text {
+  margin-left: 15px;
   color: #673ab7;
 }

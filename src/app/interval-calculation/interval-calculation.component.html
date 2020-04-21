@@ -1,0 +1,19 @@
+<div class="step">
+  <div class="title secondary">
+    Interval calculation
+  </div>
+  <div>
+    <div class="info-block">
+      <div class="description main fix-description">
+        An interval is the distance between two notes, and is measured by number of steps (or tones).
+        <br><br><b>Click two keys</b> to check how many steps are between each other.
+      </div>
+    </div>
+  </div>
+  
+  <div id="keyboard-component">
+    <div class="step-length" *ngIf="semitones != null">{{semitones}} half-steps ({{semitones/2}} whole-steps)</div>
+    <keyboard [dottedKeys]="dottedKeys" (keyPlayed)="handleKeyPlayed($event)"></keyboard>
+  </div>
+</div>
+
