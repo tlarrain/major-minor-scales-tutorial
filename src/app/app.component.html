@@ -3,8 +3,10 @@
   <app-cover *ngIf="step == 1" (finished)="next()"></app-cover>
   <app-tone-basics *ngIf="step == 2" (finished)="readyForNext = $event" (keyPlayed)="handleKeyPlayed($event)"></app-tone-basics>
   <app-interval-calculation class="step" *ngIf="step == 3" (finished)="readyForNext = true" (keyPlayed)="handleKeyPlayed($event)" [maxKeys]="2"></app-interval-calculation>
-
-  <div class="navigation-bar" *ngIf="step != 1 && readyForNext">
+  <app-tone-basics-quiz class="step" *ngIf="step == 4" (finished)="readyForNext = true" (keyPlayed)="handleKeyPlayed($event)"></app-tone-basics-quiz>
+  <app-scales-menu class="step" *ngIf="step == 5" (finished)="goToScales($event)"></app-scales-menu>
+  <app-scales-tutorial class="step" *ngIf="step == 6" (finished)="readyForNext = true" [tutorialDetails]="scaleTutorial" (keyPlayed)="handleKeyPlayed($event)"></app-scales-tutorial>
+  <div class="navigation-bar" *ngIf="step != 1">
     <div class="prev-step-button">
       <button mat-fab color="primary" class="prev-btn" (click)="previous()"
         aria-label="Example icon button with a home icon">
@@ -12,7 +14,7 @@
       </button>
       <span class="prev-step-text">Back</span>
     </div>
-    <div class="next-step-button">
+    <div class="next-step-button" *ngIf="readyForNext">
       <span class="next-step-text">Next step</span>
       <button mat-fab color="primary" class="next-btn" (click)="next()" aria-label="Example icon button with a home icon">
         <mat-icon>keyboard_arrow_right</mat-icon>

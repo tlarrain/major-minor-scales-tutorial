@@ -1,0 +1,25 @@
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+mat-icon {
+  vertical-align: bottom;
+}
+
+.option {
+  line-height: 23px;
+}
+
+.correct {
+  color: #673ab7;
+}
+
+.incorrect {
+  color: red;
+}

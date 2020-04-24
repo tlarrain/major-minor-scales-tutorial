@@ -23,7 +23,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .container {
   display: block;
-  margin: 70px 195px 20px 100px;
+  padding: 70px 195px 20px 100px;
 }
 
 .step {
@@ -62,9 +62,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   height: 120px;
 }
 
+.info-block-small {
+  height: 60px;
+}
+
 .navigation-bar {
   margin-top: 20px;
-  height: 200px;
+  height: 70px;
 }
 
 .next-step-button {

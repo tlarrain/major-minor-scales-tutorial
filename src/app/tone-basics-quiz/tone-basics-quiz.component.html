@@ -1,0 +1,43 @@
+<div class="step">
+  <div class="title secondary">
+    It's quiz time!
+  </div>
+  <div>
+    <div class="info-block-small">
+      <div class="description main fix-description">
+        Now we know how to calculate intervals, let's answer a quick question:
+      </div>
+    </div>
+  </div>
+  <div class="quiz">
+    <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      [(ngModel)]="userAnswer"
+      (ngModelChange)="checkAnswer()">
+      <mat-radio-button
+        
+        [disabled]="isAnswerCorrect()"
+        class="example-radio-button"
+        *ngFor="let option of toneBasicsQuiz.options"
+        [value]="option">
+        <span class="option">
+          {{option}} half-steps
+        </span>
+        <span *ngIf="userAnswer == option && isAnswerCorrect()" class="correct">
+          <mat-icon>check_circle_outline
+          </mat-icon>
+          Good! you are interval calculator master!
+        </span>
+        <span *ngIf="userAnswer == option && !isAnswerCorrect()" class="incorrect">
+          <mat-icon>clear</mat-icon>
+          Ouch! try again
+        </span>
+      </mat-radio-button>
+      
+    </mat-radio-group>
+  </div>
+  <div id="keyboard-component">
+    <keyboard [dottedKeys]="dottedKeys" (keyPlayed)="handleKeyPlayed($event)"></keyboard>
+  </div>
+</div>

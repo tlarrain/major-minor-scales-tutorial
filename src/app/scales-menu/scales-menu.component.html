@@ -1,0 +1,54 @@
+<div class="step">
+  <div class="title secondary">
+    Which scale do you want to learn?
+  </div>
+  <div>
+    <div class="info-block">
+      <div *ngIf="!isQuizDone()" class="description main float-description">
+        We could classify them as “happy” and “sad”, which is which?
+        <br><br>
+        Play the sound samples and hear the differences. Drag and drop to the corresponding box
+      </div>
+      <div *ngIf="isQuizDone()" class="description main float-description">
+        Great work! Now press on which scale you want to learn
+      </div>
+    </div>
+  </div>
+  <div class="quiz">
+    <div 
+    class="sounds">
+      <div *ngIf="!isHappyCorrect" class="left-block">
+        <div class="tile-title">Major scale</div>
+        <div>
+          <button draggable [dragData]="'Major scale'" mat-fab color="primary" (click)="playMajorScale()"
+            aria-label="Example icon button with a home icon">
+            <mat-icon>volume_up</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="!isSadCorrect" class="right-block">
+        <div class="tile-title">Minor scale</div>
+        <div>
+          <button draggable [dragData]="'Minor scale'" mat-fab color="primary" (click)="playMinorScale()"
+            aria-label="Example icon button with a home icon">
+            <mat-icon>volume_up</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="choices">
+      <div (click)="isSadCorrect && nextScale('minor')" droppable class="drop-box left-block"
+      (onDrop)="drop($event, 'Sad')">
+        <span *ngIf="!isSadCorrect">Sad</span>
+        <span *ngIf="isSadCorrect">Minor scale</span>
+        
+      </div>
+      <div (click)="isHappyCorrect && nextScale('major')" droppable class="drop-box right-block"
+      (onDrop)="drop($event, 'Happy')">
+        <span *ngIf="!isHappyCorrect">Happy</span>
+        <span *ngIf="isHappyCorrect">Major scale</span>
+      </div>
+    </div>
+  </div>
+</div>

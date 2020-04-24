@@ -6,7 +6,7 @@ import { SoundService } from './services/sound.service';
 import { PianoNote } from './core/piano-note';
 import { PianoMode } from './core/piano-mode.enum';
 import { StorageStepService } from './services/storage-step.service';
-
+import { MajorScaleTutorial, ScaleTutorial } from './scales-tutorial/scale-tutorial.constants';
 
 @Component({
   selector: 'app-root',
@@ -17,12 +17,13 @@ export class AppComponent implements OnInit {
   title = 'project';
   mode: PianoMode = PianoMode.Play;
   subscription: Subscription;
+  scaleTutorial: ScaleTutorial = MajorScaleTutorial;
   public step = 1;
   public substep = 1;
   public dottedKeys = [];
   public maxKeys = 2;
   public readyForNext = false;
-  private saveStates = false;
+  private saveStates = true;
   constructor(
     private storageService: StorageStepService,
     private pianoService: PianoService,
@@ -58,6 +59,15 @@ export class AppComponent implements OnInit {
     if (this.saveStates) {
       this.storageService.setStep(this.step);
     }
+  }
+
+  goToScales(scaleName: string) {
+    if (scaleName === 'major') {
+      this.scaleTutorial = MajorScaleTutorial;
+    } else {
+      this.scaleTutorial = MajorScaleTutorial;
+    }
+    this.next();
   }
 
 }

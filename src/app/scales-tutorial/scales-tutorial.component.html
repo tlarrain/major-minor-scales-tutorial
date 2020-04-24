@@ -1,0 +1,23 @@
+<div class="step">  
+  <div class="title secondary">
+    {{tutorialDetails?.scaleName | titlecase}} Scale
+  </div>
+  <div>
+    <div class="info-block">
+      <div class="description main fix-description">
+        The pattern of the major scale is the following:<br>
+        {{scalePattern}}<br>
+        <b>Hint</b>: {{tutorialDetails?.hint}}
+      </div>
+    </div>
+    <div class="info-block">
+      <div class="description main fix-description">
+        If you follow this pattern from any key, you will get it’s {{tutorialDetails?.scaleName}} scale!<br>
+        Play the scale starting from {{tutorialDetails?.startingKey.name}} and you’ll hear that happy sound
+      </div>
+    </div>
+  </div>
+  <div id="keyboard-component">
+    <keyboard [dottedKeys]="dottedKeys" (keyPlayed)="handleKeyPlayed($event)"></keyboard>
+  </div>
+</div>

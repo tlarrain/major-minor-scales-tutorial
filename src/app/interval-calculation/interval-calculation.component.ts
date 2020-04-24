@@ -1,17 +1,20 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { BaseComponent } from '../core/base-component';
 
 @Component({
   selector: 'app-interval-calculation',
   templateUrl: './interval-calculation.component.html',
   styleUrls: ['./interval-calculation.component.scss']
 })
-export class IntervalCalculationComponent implements OnInit {
+export class IntervalCalculationComponent extends BaseComponent implements OnInit {
   public dottedKeys: number[] = [];
   public semitones: number = null;
   @Output() finished = new EventEmitter<boolean>();
-  @Output() keyPlayed = new EventEmitter<any>();
   @Input() maxKeys: number;
-  constructor() { }
+  constructor() {
+    super();
+  }
+
   ngOnInit(): void {
     setTimeout(() => {
       this.finished.emit(true);

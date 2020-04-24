@@ -1,0 +1,43 @@
+.tile-title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.drop-box {
+  border: solid 3px #673ab7;
+  border-radius: 15px;
+  width: 190px;
+  height: 100px;
+  text-align: center;
+  line-height: 95px;
+}
+
+mat-grid-list {
+  margin: 40px 250px 0 250px;
+}
+
+button {
+  display: block;
+  margin: 21px auto;
+}
+
+.left-block {
+  float: left;
+}
+
+.right-block {
+  float: right;
+}
+
+.sounds {
+  height: 100px;
+  margin: 20px 56px 50px;
+}
+
+.choices {
+  height: 120px;
+}
+
+.quiz {
+  margin: 0 200px;
+}

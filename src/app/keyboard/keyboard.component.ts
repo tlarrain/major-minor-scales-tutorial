@@ -64,6 +64,7 @@ export class KeyboardComponent implements OnInit {
   }
 
   isKeyDotted(keyNumber: number) {
+    if (!this.dottedKeys) { return false; }
     return this.dottedKeys.indexOf(keyNumber) > -1;
   }
 
