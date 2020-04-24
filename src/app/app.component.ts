@@ -6,7 +6,7 @@ import { SoundService } from './services/sound.service';
 import { PianoNote } from './core/piano-note';
 import { PianoMode } from './core/piano-mode.enum';
 import { StorageStepService } from './services/storage-step.service';
-import { MajorScaleTutorial, ScaleTutorial } from './scales-tutorial/scale-tutorial.constants';
+import { MajorScaleTutorial, MinorScaleTutorial, ScaleTutorial } from './scales-tutorial/scale-tutorial.constants';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   title = 'project';
   mode: PianoMode = PianoMode.Play;
   subscription: Subscription;
-  scaleTutorial: ScaleTutorial = MajorScaleTutorial;
+  scaleTutorial: ScaleTutorial = MinorScaleTutorial;
   public step = 1;
   public substep = 1;
   public dottedKeys = [];

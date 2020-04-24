@@ -17,3 +17,14 @@ export const MajorScaleTutorial: ScaleTutorial = {
   },
   startingKeyHint: 'right before the 2 black keys together',
 };
+
+export const MinorScaleTutorial: ScaleTutorial = {
+  scaleName: 'minor',
+  scalePattern: [2, 1, 2, 2, 1, 2, 2],
+  hint: 'is the pattern starting from A and playing the white keys',
+  startingKey: {
+    name: 'A',
+    number: 37,
+  },
+  startingKeyHint: 'Between the 2nd and 3rd black notes in the 3-pattern',
+};
