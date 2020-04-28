@@ -6,7 +6,7 @@
     <div class="info-block">
       <div class="description main fix-description">
         The pattern of the major scale is the following:<br>
-        {{scalePattern}}<br>
+        <div class="scale-pattern">{{scalePattern}}</div>
         <b>Hint</b>: {{tutorialDetails?.hint}}
       </div>
     </div>
@@ -18,6 +18,6 @@
     </div>
   </div>
   <div id="keyboard-component">
-    <keyboard [dottedKeys]="dottedKeys" (keyPlayed)="handleKeyPlayed($event)"></keyboard>
+    <keyboard [dottedKeys]="dottedKeys" [textOnKeys]="textOnKeys" (keyPlayed)="handleKeyPlayed($event)"></keyboard>
   </div>
 </div>

@@ -1,4 +1,5 @@
 
+<mat-progress-bar *ngIf="step > 1" mode="determinate" value="{{ stepRate/9 * 100 }}"></mat-progress-bar>
 <div class="container">
   <app-cover *ngIf="step == 1" (finished)="next()"></app-cover>
   <app-tone-basics *ngIf="step == 2" (finished)="readyForNext = $event" (keyPlayed)="handleKeyPlayed($event)"></app-tone-basics>
@@ -6,7 +7,9 @@
   <app-tone-basics-quiz class="step" *ngIf="step == 4" (finished)="readyForNext = true" (keyPlayed)="handleKeyPlayed($event)"></app-tone-basics-quiz>
   <app-scales-menu class="step" *ngIf="step == 5" (finished)="goToScales($event)"></app-scales-menu>
   <app-scales-tutorial class="step" *ngIf="step == 6" (finished)="readyForNext = true" [tutorialDetails]="scaleTutorial" (keyPlayed)="handleKeyPlayed($event)"></app-scales-tutorial>
-  <div class="navigation-bar" *ngIf="step != 1">
+  <app-scales-quiz class="step" *ngIf="step == 7" (finished)="handleScaleQuizSuccess($event)" [tutorialDetails]="scaleTutorial" (keyPlayed)="handleKeyPlayed($event)" [maxKeys]="-1"></app-scales-quiz>
+  <app-back-cover class="step" *ngIf="step == 8" (finished)="handleTutorialFinish($event)"></app-back-cover>
+  <div class="navigation-bar" *ngIf="step != 1 && step != 8">
     <div class="prev-step-button">
       <button mat-fab color="primary" class="prev-btn" (click)="previous()"
         aria-label="Example icon button with a home icon">

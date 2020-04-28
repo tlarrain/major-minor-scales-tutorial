@@ -9,8 +9,15 @@ import { BaseComponent } from '../core/base-component';
 })
 export class ToneBasicsComponent extends BaseComponent implements OnInit {
   public substep;
-  public dottedKeys: number[] = [23, 24, 32, 33, 40, 42];
-  @Output() finished = new EventEmitter<boolean>();
+  public dottedKeys: number[] = [23, 24, 32, 33, 42, 44];
+  public textOnKeys: any[] = [
+    { number: 23, text: 'half-step' },
+    { number: 24, text: '' },
+    { number: 32, text: 'also half-step' },
+    { number: 33, text: '' },
+    { number: 42, text: 'whole-step' },
+    { number: 44, text: '' },
+  ];
   @Input() maxKeys = -1;
   constructor(
     private storageService: StorageStepService,
@@ -20,9 +27,7 @@ export class ToneBasicsComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.substep = 1;
-    setTimeout(() => {
-      this.finished.emit(false);
-    }, 10);
+    this.finished.emit(false);
   }
 
   nextSubstep() {

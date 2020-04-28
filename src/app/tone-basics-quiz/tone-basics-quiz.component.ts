@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { BaseComponent } from '../core/base-component';
-
+import { TONE_BASICS_QUIZZES } from './tone-basics-quiz.constants';
 @Component({
   selector: 'app-tone-basics-quiz',
   templateUrl: './tone-basics-quiz.component.html',
@@ -15,19 +15,32 @@ export class ToneBasicsQuizComponent extends BaseComponent implements OnInit {
   public userAnswer: number;
   public dottedKeys: number[] = [];
   public semitones: number = null;
+  public quizNumber = 0;
+  public totalQuizzes = TONE_BASICS_QUIZZES.length;
   @Output() finished = new EventEmitter<boolean>();
   @Input() maxKeys: number;
   constructor() {
     super();
   }
   ngOnInit(): void {
-    this.dottedKeys = this.toneBasicsQuiz.dottedKeys;
+    this.uptadeCurrentQuiz();
   }
 
   checkAnswer() {
     if (this.isAnswerCorrect()) {
-      return this.finished.emit(true);
+      this.quizNumber++;
+      if (this.quizNumber === this.totalQuizzes) {
+        return this.finished.emit(true);
+      }
+      setTimeout(() => {
+        this.uptadeCurrentQuiz();
+      }, 1000);
     }
+  }
+
+  uptadeCurrentQuiz() {
+    this.toneBasicsQuiz = TONE_BASICS_QUIZZES[this.quizNumber];
+    this.dottedKeys = this.toneBasicsQuiz.dottedKeys;
   }
 
   isAnswerCorrect() {

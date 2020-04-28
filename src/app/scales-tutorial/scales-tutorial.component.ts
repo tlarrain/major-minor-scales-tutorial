@@ -10,18 +10,22 @@ import { convertTonesToString } from '../utils/utils';
 export class ScalesTutorialComponent extends BaseComponent implements OnInit {
   @Input() tutorialDetails: ScaleTutorial;
   @Input() dottedKeys: number[];
-  @Output() finished = new EventEmitter<boolean>();
+  public textOnKeys: any[];
   scalePattern: string;
   constructor() {
     super();
   }
 
   ngOnInit(): void {
+    this.textOnKeys = [
+      {
+        number: this.tutorialDetails.startingKey.number,
+        text: 'This is ' + this.tutorialDetails.startingKey.name,
+      }
+    ];
     this.dottedKeys = [this.tutorialDetails.startingKey.number];
     this.getTonesPattern();
-    setTimeout(() => {
-      this.finished.emit(true);
-    }, 100);
+    this.finished.emit(true);
   }
 
   getTonesPattern() {

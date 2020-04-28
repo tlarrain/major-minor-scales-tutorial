@@ -10,6 +10,7 @@ import { IPianoKey } from './ipiano-key';
 export class KeyboardComponent implements OnInit {
   @Output() keyPlayed = new EventEmitter<number>();
   @Input() dottedKeys = [];
+  @Input() textOnKeys = [];
   pianoKeys: IPianoKey[];
   private highlightedKeyId = 0;
 
@@ -66,6 +67,25 @@ export class KeyboardComponent implements OnInit {
   isKeyDotted(keyNumber: number) {
     if (!this.dottedKeys) { return false; }
     return this.dottedKeys.indexOf(keyNumber) > -1;
+  }
+
+  barForKey(keyNumber: number) {
+    if (!this.textOnKeys) { return false; }
+    for (const key of this.textOnKeys) {
+      if (key.number === keyNumber) {
+        return true;
+      }
+    }
+    return false;
+  }
+  textForKey(keyNumber: number) {
+    if (!this.textOnKeys) { return false; }
+    for (const key of this.textOnKeys) {
+      if (key.number === keyNumber) {
+        return key.text;
+      }
+    }
+    return '';
   }
 
 }

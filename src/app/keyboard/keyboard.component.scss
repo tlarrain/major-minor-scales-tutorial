@@ -159,3 +159,26 @@ ul#piano .key-group span:active {
   -moz-box-shadow:inset 0px -1px 1px rgba(255,255,255,0.4),0 1px 0px rgba(0,0,0,0.8),0 2px 2px rgba(0,0,0,0.4),0 -1px 0px #000;
   box-shadow:inset 0px -1px 1px rgba(255,255,255,0.4),0 1px 0px rgba(0,0,0,0.8),0 2px 2px rgba(0,0,0,0.4),0 -1px 0px #000;
 }
+
+.key-bar {
+  border-left: solid 6px #bbbbbb;
+  position: absolute;
+}
+
+.white-key-bar {
+ margin-left: 16px;
+  margin-top: 191px;
+  height: 91px;
+}
+
+.black-key-bar {
+  margin-top: 105px;
+  margin-left: 7px;
+  height: 176px;
+}
+
+.key-text {
+  margin-top: 292px;
+  width: 100px;
+  position: absolute;
+}

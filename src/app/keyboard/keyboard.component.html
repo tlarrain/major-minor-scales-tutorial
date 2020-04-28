@@ -2,9 +2,17 @@
     <ul id="piano">
         <li class="key-group" *ngFor="let pianoKey of pianoKeys">
             <span class="dot white-dot" *ngIf="isKeyDotted(pianoKey.whiteKeyId)"></span>
+            <div *ngIf="barForKey(pianoKey.whiteKeyId)">
+                <div class="key-bar white-key-bar"></div>
+                <div class="key-text">{{ textForKey(pianoKey.whiteKeyId) }}</div>
+            </div>
             <div class="anchor" [style.background]="getColor(pianoKey.whiteKeyId)" (click)="keyPress(pianoKey.whiteKeyId)"></div>
             <span class="black-key" *ngIf="pianoKey.blackKeyId" [style.background]="getColor(pianoKey.blackKeyId)" (click)="keyPress(pianoKey.blackKeyId)">
                 <span class="dot black-dot" *ngIf="isKeyDotted(pianoKey.blackKeyId)"></span>
+                <div *ngIf="barForKey(pianoKey.blackKeyId)">
+                    <div class="key-bar black-key-bar"></div>
+                    <div class="key-text">{{ textForKey(pianoKey.blackKeyId) }}</div>
+                </div>
             </span>
         </li>
     </ul>

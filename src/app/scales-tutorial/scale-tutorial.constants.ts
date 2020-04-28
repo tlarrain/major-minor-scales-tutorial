@@ -1,8 +1,12 @@
+export interface KeyboardKey {
+  name: string;
+  number: number;
+}
 export interface ScaleTutorial {
   scaleName: string;
   scalePattern: number[];
   hint: string;
-  startingKey: { name: string, number: number };
+  startingKey: KeyboardKey;
   startingKeyHint: string;
 }
 

@@ -1,14 +1,15 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { BaseComponent } from '../core/base-component';
 
 @Component({
   selector: 'app-cover',
   templateUrl: './cover.component.html',
   styleUrls: ['./cover.component.scss']
 })
-export class CoverComponent implements OnInit {
-
-  @Output() finished = new EventEmitter<boolean>();
-  constructor() { }
+export class CoverComponent extends BaseComponent implements OnInit {
+  constructor() {
+    super();
+  }
 
   ngOnInit(): void {
   }

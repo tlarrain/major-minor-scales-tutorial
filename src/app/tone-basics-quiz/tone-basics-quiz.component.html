@@ -11,14 +11,13 @@
   </div>
   <div class="quiz">
     <mat-radio-group
-      aria-labelledby="example-radio-group-label"
-      class="example-radio-group"
+      aria-labelledby="radio-group-label"
+      class="radio-group"
       [(ngModel)]="userAnswer"
       (ngModelChange)="checkAnswer()">
       <mat-radio-button
-        
         [disabled]="isAnswerCorrect()"
-        class="example-radio-button"
+        class="radio-button"
         *ngFor="let option of toneBasicsQuiz.options"
         [value]="option">
         <span class="option">
@@ -27,15 +26,20 @@
         <span *ngIf="userAnswer == option && isAnswerCorrect()" class="correct">
           <mat-icon>check_circle_outline
           </mat-icon>
-          Good! you are interval calculator master!
+          <span *ngIf="quizNumber < totalQuizzes - 1">Nice!</span>
+          <span *ngIf="quizNumber == totalQuizzes - 1">Only one more to go!</span>
+          <span *ngIf="quizNumber == totalQuizzes">Good! you are the interval calculator master!</span>
         </span>
         <span *ngIf="userAnswer == option && !isAnswerCorrect()" class="incorrect">
           <mat-icon>clear</mat-icon>
           Ouch! try again
         </span>
       </mat-radio-button>
-      
     </mat-radio-group>
+  </div>
+  <div class="spinner-box">
+    <mat-progress-spinner class="example-margin" color="primary" mode="determinate" [value]="quizNumber / totalQuizzes * 100">
+    </mat-progress-spinner>
   </div>
   <div id="keyboard-component">
     <keyboard [dottedKeys]="dottedKeys" (keyPlayed)="handleKeyPlayed($event)"></keyboard>

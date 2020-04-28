@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { BaseComponent } from '../core/base-component';
 
 @Component({
@@ -9,16 +9,13 @@ import { BaseComponent } from '../core/base-component';
 export class IntervalCalculationComponent extends BaseComponent implements OnInit {
   public dottedKeys: number[] = [];
   public semitones: number = null;
-  @Output() finished = new EventEmitter<boolean>();
   @Input() maxKeys: number;
   constructor() {
     super();
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.finished.emit(true);
-    }, 100);
+
   }
 
   handleKeyPlayed(note: number) {
@@ -32,7 +29,8 @@ export class IntervalCalculationComponent extends BaseComponent implements OnIni
     const index = this.dottedKeys.indexOf(keyId);
     if (index !== -1) { return this.dottedKeys.splice(index, 1); }
     if (this.maxKeys === -1 || !this.isDottedKeysArrayFull()) {
-      return this.dottedKeys = this.dottedKeys.concat(keyId);
+      this.dottedKeys = this.dottedKeys.concat(keyId);
+      return this.dottedKeys.sort();
     }
     for (let i = 0; i < this.dottedKeys.length; i++) {
       if (this.dottedKeys[i] > keyId) {
@@ -51,6 +49,7 @@ export class IntervalCalculationComponent extends BaseComponent implements OnIni
 
   updateIntervalValue() {
     if (this.isDottedKeysArrayFull()) {
+      this.finished.emit(true);
       return this.semitones = this.dottedKeys[this.dottedKeys.length - 1] - this.dottedKeys[0];
     }
     return this.semitones = null;

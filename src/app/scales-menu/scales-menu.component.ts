@@ -1,17 +1,22 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { StorageStepService } from '../services/storage-step.service';
+import { BaseComponent } from '../core/base-component';
 
 @Component({
   selector: 'app-scales-menu',
   templateUrl: './scales-menu.component.html',
   styleUrls: ['./scales-menu.component.scss']
 })
-export class ScalesMenuComponent implements OnInit {
+export class ScalesMenuComponent extends BaseComponent implements OnInit {
   public scales: string[];
   public isHappyCorrect = false;
   public isSadCorrect = false;
   public audio = new Audio();
-  @Output() finished = new EventEmitter<string>();
-  constructor() { }
+  constructor(
+    private storageService: StorageStepService,
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
     this.scales = ['Major scale', 'Minor scale'];
@@ -42,7 +47,7 @@ export class ScalesMenuComponent implements OnInit {
     return this.isHappyCorrect && this.isSadCorrect;
   }
 
-  drop(e, feeling) {
+  drop(e, feeling: string) {
     if (!this.isHappyCorrect) {
       this.isHappyCorrect = (e.dragData === 'Major scale' && feeling === 'Happy');
     }
@@ -54,6 +59,7 @@ export class ScalesMenuComponent implements OnInit {
   }
 
   nextScale(scale: string) {
+    this.storageService.setScaleName(scale);
     this.finished.emit(scale);
   }
 

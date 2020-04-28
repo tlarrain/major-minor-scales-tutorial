@@ -1,0 +1,21 @@
+<div class="step">
+  <div class="title secondary">
+    {{tutorialDetails?.scaleName | titlecase}} Scale
+  </div>
+  <div>
+    <div class="info-block">
+      <div class="description main fix-description">
+        Quiz time! Remember the hint<br>
+        Press all the keys corresponding to the major scale starting here
+      </div>
+    </div>
+  </div>
+  <div class="btn-container">
+    <button class="test-result-btn" (click)="testResult()" mat-raised-button color="primary">Test result</button>
+    <span *ngIf="quizTry && !quizResult" class="result-detail wrong-result">Whoops! try again</span>
+    <span *ngIf="quizTry && quizResult" class="result-detail right-result">Great! you did it!</span>
+  </div>
+  <div id="keyboard-component">
+    <keyboard [dottedKeys]="dottedKeys" (keyPlayed)="handleKeyPlayed($event)"></keyboard>
+  </div>
+</div>
