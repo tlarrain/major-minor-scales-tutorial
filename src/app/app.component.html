@@ -1,9 +1,9 @@
 
-<mat-progress-bar *ngIf="step > 1" mode="determinate" value="{{ stepRate/9 * 100 }}"></mat-progress-bar>
+<mat-progress-bar mode="determinate" value="{{ stepRate/9 * 100 }}"></mat-progress-bar>
 <div class="container">
   <app-cover *ngIf="step == 1" (finished)="next()"></app-cover>
   <app-tone-basics *ngIf="step == 2" (finished)="readyForNext = $event" (keyPlayed)="handleKeyPlayed($event)"></app-tone-basics>
-  <app-interval-calculation class="step" *ngIf="step == 3" (finished)="readyForNext = true" (keyPlayed)="handleKeyPlayed($event)" [maxKeys]="2"></app-interval-calculation>
+  <app-interval-calculation class="step" *ngIf="step == 3" (finished)="readyForNext = $event" (keyPlayed)="handleKeyPlayed($event)" [maxKeys]="2"></app-interval-calculation>
   <app-tone-basics-quiz class="step" *ngIf="step == 4" (finished)="readyForNext = true" (keyPlayed)="handleKeyPlayed($event)"></app-tone-basics-quiz>
   <app-scales-menu class="step" *ngIf="step == 5" (finished)="goToScales($event)"></app-scales-menu>
   <app-scales-tutorial class="step" *ngIf="step == 6" (finished)="readyForNext = true" [tutorialDetails]="scaleTutorial" (keyPlayed)="handleKeyPlayed($event)"></app-scales-tutorial>

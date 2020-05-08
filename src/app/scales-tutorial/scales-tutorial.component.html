@@ -5,15 +5,10 @@
   <div>
     <div class="info-block">
       <div class="description main fix-description">
-        The pattern of the major scale is the following:<br>
+        The pattern of the {{tutorialDetails?.scaleName}} scale is the following:<br>
         <div class="scale-pattern">{{scalePattern}}</div>
-        <b>Hint</b>: {{tutorialDetails?.hint}}
-      </div>
-    </div>
-    <div class="info-block">
-      <div class="description main fix-description">
-        If you follow this pattern from any key, you will get it’s {{tutorialDetails?.scaleName}} scale!<br>
-        Play the scale starting from {{tutorialDetails?.startingKey.name}} and you’ll hear that happy sound
+        <b>Hint</b>: {{tutorialDetails?.hint}}<br><br>
+        <b>Play the scale</b> starting from {{tutorialDetails?.startingKey.name}} and you’ll hear that {{tutorialDetails?.scaleFeeling}} sound
       </div>
     </div>
   </div>

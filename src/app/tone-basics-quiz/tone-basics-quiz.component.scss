@@ -18,6 +18,8 @@
 
 mat-icon {
   vertical-align: bottom;
+  height: 23px;
+  width: 23px;
 }
 
 .spinner-box {
@@ -25,9 +27,14 @@ mat-icon {
   padding-top: 15px;
   float: right;
 }
+
 mat-progress-spinner {
   margin-right: 120px;
   display: inline;
+}
+
+mat-radio-group {
+  font-size: 18px;
 }
 
 .option {
@@ -45,4 +52,8 @@ mat-progress-spinner {
 .incorrect {
   color: red;
   margin-left: 10px;
+}
+
+.info-block-small {
+  height: 50px;
 }

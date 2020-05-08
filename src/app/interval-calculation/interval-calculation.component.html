@@ -3,17 +3,25 @@
     Interval calculation
   </div>
   <div>
-    <div class="info-block">
-      <div class="description main fix-description">
-        An interval is the distance between two notes, and is measured by number of steps (or tones).
-        <br><br><b>Click two keys</b> to check how many steps are between each other.
+    <div class="info-block" *ngIf="substep >= 1">
+      <div class="description main float-description">
+        An interval is the <span class="important">distance between two notes</span>, and is measured<br>by number of steps/half-steps (or tones/semitones).
+      </div>
+      <div *ngIf="substep == 1" class="next-button">
+        <button mat-fab color="primary" (click)="nextSubstep()" aria-label="Example icon button with a home icon">
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="info-block" *ngIf="substep >= 2">
+      <div class="description main float-description">
+        <span class="important">Click two keys</span> to check how many steps are between each other.
       </div>
     </div>
   </div>
-  
-  <div id="keyboard-component">
-    <div class="step-length" *ngIf="semitones != null">{{semitones}} half-steps ({{semitones/2}} whole-steps)</div>
+  <div *ngIf="substep >= 2" id="keyboard-component">
     <keyboard [dottedKeys]="dottedKeys" (keyPlayed)="handleKeyPlayed($event)"></keyboard>
+    <div class="step-length" *ngIf="semitones != null">{{semitones}} half-steps ({{semitones/2}} whole-steps)</div>
   </div>
 </div>
 

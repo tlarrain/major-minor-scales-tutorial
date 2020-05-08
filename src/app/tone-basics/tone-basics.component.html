@@ -5,7 +5,7 @@
   <div>
     <div class="info-block" *ngIf="substep >= 1">
       <div class="description main float-description">
-        The smallest distance between two notes is called a <b>semitone or half-step</b>. <br>In the piano it is when two
+        The smallest distance between two notes is called a <span class="important">semitone or half-step</span>. <br>In the piano it is when two
         notes are the
         closest possible to each other
       </div>
@@ -19,7 +19,7 @@
     </div>
     <div class="info-block" *ngIf="substep >= 2">
       <div class="description main float-description">
-        Two adjacent semitones are called a <b>tone or whole-step</b>. <br>Let's look at the keyboard to visualize it!
+        Two adjacent semitones are called a <span class="important">tone or whole-step</span>. <br>Let's look at the keyboard to visualize it!
       </div>
       <div *ngIf="substep == 2" class="next-button">
         <button mat-fab color="primary" (click)="nextSubstep()"

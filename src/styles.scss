@@ -27,7 +27,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .step {
-  height: 570px;
+  height: 585px;
 }
 
 .title {
@@ -51,7 +51,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .float-description {
   float: left;
-  width: 700px;
+  width: 730px;
+}
+
+.important {
+  font-weight: bold;
+  font-size: 26px;
 }
 
 .appear-btn {

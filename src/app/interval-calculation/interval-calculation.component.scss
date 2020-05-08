@@ -1,4 +1,21 @@
 .step-length {
   text-align: center;
-  font-size: 18px;
+  font-size: 22px;
+  font-weight: bold;
+  position: absolute;
+  display: block;
+  width: 100%;
+  margin-top:18px;
+}
+
+.next-button {
+  float: right;
+  margin-right: 12px;
+}
+
+.button-label {
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin-top: 5px;
 }

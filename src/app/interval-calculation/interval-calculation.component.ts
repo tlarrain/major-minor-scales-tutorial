@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BaseComponent } from '../core/base-component';
+import { StorageStepService } from '../services/storage-step.service';
 
 @Component({
   selector: 'app-interval-calculation',
@@ -9,13 +10,17 @@ import { BaseComponent } from '../core/base-component';
 export class IntervalCalculationComponent extends BaseComponent implements OnInit {
   public dottedKeys: number[] = [];
   public semitones: number = null;
+  public substep: number;
   @Input() maxKeys: number;
-  constructor() {
+  constructor(
+    private storageService: StorageStepService,
+  ) {
     super();
   }
 
   ngOnInit(): void {
-
+    this.substep = 1;
+    this.finished.emit(false);
   }
 
   handleKeyPlayed(note: number) {
@@ -53,6 +58,12 @@ export class IntervalCalculationComponent extends BaseComponent implements OnIni
       return this.semitones = this.dottedKeys[this.dottedKeys.length - 1] - this.dottedKeys[0];
     }
     return this.semitones = null;
+  }
+
+  nextSubstep() {
+    this.substep++;
+    this.storageService.setSubstep(this.substep);
+    if (this.substep >= 3) { this.finished.emit(true); }
   }
 
 }

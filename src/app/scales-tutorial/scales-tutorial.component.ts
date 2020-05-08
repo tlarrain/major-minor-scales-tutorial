@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ScaleTutorial } from './scale-tutorial.constants';
 import { BaseComponent } from '../core/base-component';
 import { convertTonesToString } from '../utils/utils';

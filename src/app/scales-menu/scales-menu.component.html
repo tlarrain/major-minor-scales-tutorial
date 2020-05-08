@@ -5,11 +5,11 @@
   <div>
     <div class="info-block">
       <div *ngIf="!isQuizDone()" class="description main float-description">
-        We could classify them as “happy” and “sad”, which is which?
+        We could classify them as <b>“happy”</b> and <b>“sad”</b>, which is which?
         <br><br>
-        Play the sound samples and hear the differences. Drag and drop to the corresponding box
+        <b>Play the sound samples</b> and hear the differences. Then, drag and drop to the corresponding box
       </div>
-      <div *ngIf="isQuizDone()" class="description main float-description">
+      <div *ngIf="isQuizDone()" class="description main float-description bigger">
         Great work! Now press on which scale you want to learn
       </div>
     </div>
